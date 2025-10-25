@@ -6,7 +6,7 @@
 
 ---
 
-Throughout this course, I consulted with a ChatGPT Project with custom instructions using Study Mode for all interactions. My intention was to simulate an office hours experience to account for the lack of in-person guidance. All interactions with GPT concerning this material are linked here. No other conversations were held. 
+Throughout this course, I consulted with a ChatGPT Project with custom instructions using Study Mode for all interactions. My intention was to simulate an office hours experience to account for the lack of in-person guidance. All interactions with GPT concerning this material are linked here. No other conversations were held. There was no use of Copilot. 
 
 I completed this course several years ago, but never saved my assignments as I knew most of it already. I decided to start a portfolio with my work, but with the hindsight of how I could make these assignments more robust. This is primarily where I use GPT: as a way to learn where my approach could be refined and improved beyond mere reflection. That is, I want to learn to approach more professionally and learn from a "professional" by submitting my attempts and getting direct feedback.
 
@@ -15,6 +15,7 @@ I've linked all interactions below with fully self-generated feedback in the res
 ## Chat Links
 
 - ### [Problem Set 0](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps0/AI_DISCLOSURE.md)
+- ### [Problem Set 1](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps1/AI_DISCLOSURE.md)
 
 
 ## Custom Instructions
