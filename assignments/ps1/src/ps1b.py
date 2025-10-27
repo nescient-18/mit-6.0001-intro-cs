@@ -49,13 +49,13 @@ if __name__ == "__main__":
     is_nonnegative = lambda x: x >= 0
     is_decimal = lambda x: 0 <= x <= 1
     
-    annual_salary = get_number("Enter your starting annual salary: ", 
+    annual_salary = get_number("Enter your starting annual salary: $", 
                                "Must be $0 or more.", condition=is_nonnegative)
     
     portion_saved = get_number("Enter the percent of your salary to save, as a decimal: ", 
                                "Must be a decimal between [0,1].", condition=is_decimal)
     
-    total_cost = get_number("Enter the cost of your dream home: ", 
+    total_cost = get_number("Enter the cost of your dream home: $", 
                             "Must be $0 or more.", condition=is_nonnegative)
     
     semi_annual_raise = get_number("Enter the semi-annual raise, as a decimal: ", 
