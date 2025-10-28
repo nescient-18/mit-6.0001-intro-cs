@@ -11,7 +11,7 @@ def get_number(input_message, error_message, condition):
             continue
         return val
 
-def calculate_savings(annual_salary, portion_saved, months=36, semi_annual_raise=0.07, current_savings=0.0, r=0.04):
+def calculate_savings(annual_salary, portion_saved, months, semi_annual_raise=0.07, current_savings=0.0, r=0.04):
     """Calculates the savings in n-months given annual salary and portion saved"""
     cur_month = 0
 
@@ -32,36 +32,33 @@ def calculate_savings(annual_salary, portion_saved, months=36, semi_annual_raise
     
     return current_savings
 
-def bisection_search(annual_salary, scale=10_000):
-    total_cost = 1_000_000
-    portion_down_payment = 0.25
+def bisection_search(annual_salary, n_months=36, scale=10_000, total_cost=1_000_000, portion_down_payment=0.25):
+    """Find the lowest savings rate to reach down payment in n months"""
     down_payment = portion_down_payment * total_cost
 
-    low = 0
-    high = scale
-    mid = (low + high) // 2
-    steps = 1
+    # check the impossibility case
+    max_savings = calculate_savings(annual_salary, 1.0, n_months)
+    if max_savings < down_payment - 100.0:
+        raise ValueError
+    
+    target_min = down_payment - 100.0
+    low, high = 0, scale            
+    steps = 0
 
-    portion_saved = mid / scale
-
-    potential_savings = calculate_savings(annual_salary, portion_saved)  # how much savings after 36 months
-
-    while abs(down_payment - potential_savings) > 100.0:      
-        if down_payment > potential_savings:
-            low = mid
-        else:
-            high = mid
-
+    # high is guaranteed sufficient
+    while low < high:
         mid = (low + high) // 2
-        if mid == low or mid == high:
-            raise ValueError
+        portion_saved = mid / scale
+        current_savings = calculate_savings(annual_salary, portion_saved, n_months)
 
-        portion_saved = mid / scale        
-        potential_savings = calculate_savings(annual_salary, portion_saved)
+        if current_savings < target_min:  # move up one if not enough savings yet
+            low = mid + 1                 # guaranteed minimum
+        else:
+            high = mid                    # if too much savings, move the high down; we're looking for minimum
 
-        steps += 1
+        steps += 1        
 
-    return (portion_saved, steps)
+    return round(low / scale, 4), steps
       
 if __name__ == "__main__":
     # conditions to determine valid input
@@ -72,7 +69,8 @@ if __name__ == "__main__":
     
     try:
         portion_saved, steps = bisection_search(annual_salary)
-        print(f"Best savings rate: {portion_saved}")
+        print(f"Best savings rate: {portion_saved:.4f}")
         print(f"Steps in bisection search: {steps}")
     except:
         print("It is not possible to pay the down payment in three years.")
+        
