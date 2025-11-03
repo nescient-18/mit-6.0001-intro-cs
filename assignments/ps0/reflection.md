@@ -1,85 +1,45 @@
-# Self-Reflection – Problem Set 0
-
-**Course:** MIT 6.0001 (OCW, Fall 2016)  
-**Assignment:** Problem Set 0  
-**Date:** 2025-10-25  
-**Author:** Zach McFatridge  
-
 # Reflection — Problem Set #1
-**Course:** 6.0001 – Introduction to Computer Science
-
+**Course:** 6.0001 – Introduction to Computer Science  
 **Date Completed:** 2025-10-25
 
 ---
 
 ## 1. Objective
-Briefly describe what the assignment was *meant* to teach or test.
-> Example: “This problem set was designed to strengthen understanding of recursion and complexity trade-offs through algorithmic problem solving.”
+Construct a basic input-math-output program, remaining aware of problematic cases.
 
 ---
 
-## 2. Process & Reasoning
-Explain how you approached the problem conceptually and technically.
-- What strategies or heuristics did you use?  
-- What decisions or assumptions guided your design?  
-- What alternative approaches did you consider (and why didn’t you use them)?  
-
-> Example: “I started with an iterative approach to check correctness, then refactored into a recursive solution to explore divide-and-conquer structure…”
-
----
-
-## 3. Key Insights
-List 2–3 things you *realized* that you didn’t know before.
-- Conceptual insight (e.g., “Recursion is not about loops but about *state*.”)  
-- Technical or syntax insight  
-- Cognitive/meta insight (“I notice I tend to overcomplicate before verifying edge cases.”)
-
----
-
-## 4. Challenges & Debugging
-Describe what confused you or what broke.
-- How did you diagnose the issue?  
-- What helped you resolve it?  
-- If still unresolved, what are your hypotheses?
-
-> Example: “My binary search returned off-by-one errors; visualizing the index updates helped isolate the mid-point logic.”
-
----
-
-## 5. Connection to Broader Learning
-Tie this assignment to:
-- Earlier material (e.g., connections to discrete math or earlier code patterns)  
-- Other domains (e.g., psychology, cognition, philosophy, etc.)  
-- Real-world analogies or relevance  
-
-> Example: “The concept of recursion mirrors self-referential processes in cognition — smaller units solving subproblems that build to an integrated whole.”
-
----
-
-## 6. Next Steps
-What’s your plan for reinforcement or extension?
-- What will you practice or research next?  
-- Do you plan to generalize this solution, visualize it, or document it further?
-
-> Example: “I’ll rewrite the recursive solution iteratively to compare performance and clarity.”
-
----
-
-## 7. Freeform Summary 
+## 2. Freeform Summary 
 As mentioned in [the parent file](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/AI_DISCLOSURE.md), I had done this assignment before several years ago. It was elementary at this point. My intention going back to this assignment was to make my approach robust and professional. I'm presently unfamiliar with more rigorous programming and software development, so I wanted to approach this with the mindset of getting out as much as possible from a basic assignment.
 
 Initially, I had an input check within the main body of the program that was very similar to `get_float()`. (Side Note: I should be more incremental with my commits and pushes so my progress appears as a genuine learning process.) After sending that code to GPT, it recommended to make a function to take care of that. Duh.
 
-It recommended to have a more general key function check -- something I could put in a `lambda` function, say -- but I didn't feel it necessary for this assignment since it was a simple binary conditon: positive or not.
+It recommended to have a more general key function check -- something I could put in a `lambda` function, say -- but I didn't feel it necessary for this assignment since it was a simple binary conditon: positive or not. As such, the `get_float()` function isn't very generalizable for other uses.
 
-### One Sentence Summary
-> “This assignment deepened my understanding of X by forcing me to grapple with Y, revealing Z.”
+I was uncertain about whether to have a `break` statement within the loop and then `return` outside of it, but GPT recommended to have it within it since it's straightforward (which I knew it was, but there are customs I'm unfamiliar with). Similar ambivalence for `while True:`.
+
+Probably the most interesting bit from this was the flow of control within the getter function. I originally had the positivity check within the `try` block. Even typing this now, I see how silly that is. The `try` check should be solely for error catching. We can worry about positivity condition iff it's a valid input to begin with. 
+
+Once the inputs are guaranteed valid from the function, we can safely perform the math needed without worry about type errors.
+
 ---
 
-## Optional: Technical Addendum
-If relevant:
-- Runtime complexity:  
-- Memory complexity:  
-- Libraries used:  
-- Known limitations:  
-- Test coverage summary:
+## 2. Process & Reasoning
+
+
+I wanted to approach the assignment more robustly and safeguard against improper input. My reasoning in this otherwise simple assignment allowed me to establish the importance of a clear flow of control. I could have had the input checks within the main body, but that would be too messy.
+
+---
+
+## 3. Key Insights
+- Clear flow of control
+- Validate early, fail clearly; prevent downstream code from needing to check anything
+- Isolate input-handling from computation
+
+---
+
+## 4. Challenges & Debugging
+Just uncertainties about best strategies and using GPT to guide me through them after attempting it myself.
+
+
+

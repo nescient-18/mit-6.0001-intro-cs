@@ -1,11 +1,10 @@
 # AI Disclosure – Problem Set 0
 
 **Course:** MIT 6.0001 (OCW, Fall 2016)  
-**Date:** 2025-10-23  
+**Date:** 2025-11-03  
 **Author:** Zach McFatridge  
 
 ---
 
 ## Chat Link
-[Public ChatGPT Conversation](https://chatgpt.com/share/68fa71b7-c92c-8001-9790-a6e4d2a539ae)
-..
+[Public ChatGPT Conversation](https://chatgpt.com/share/69090dd6-fa88-8001-971c-9bdf2f0c8821)
