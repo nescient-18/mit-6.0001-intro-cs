@@ -12,7 +12,7 @@ I completed this course several years ago, but never saved my assignments as I k
 
 Some (but not all) Markdown templates were inspired by but not created by GPT. The idea of using GitHub as a comprehensive portfolio (for more than just programming) is my own.
 
-I've linked all interactions for this course with fully self-generated feedback in the respective files.
+I've linked all interactions for this course with fully self-generated reflection in the respective files. However, within these reflections, starting with problem set 2, I allowed GPT to have a section where it could offer brief observations based on our conversation and my own reflections. It is naive of me to think I could improve and learn solely from my present state and no external critique. My intent is to use GPT as a way to elevate where I am, not to replace myself.
 
 ## Chat Links
 
