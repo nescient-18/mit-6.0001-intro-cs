@@ -37,7 +37,7 @@ def bisection_search(annual_salary, n_months=36, scale=10_000, total_cost=1_000_
     down_payment = portion_down_payment * total_cost
 
     # check the impossibility case
-    max_savings = calculate_savings(annual_salary, 1.0, n_months)
+    max_savings = calculate_savings(annual_salary, portion_saved=1.0, months=n_months)
     if max_savings < down_payment - 100.0:
         raise ValueError
     

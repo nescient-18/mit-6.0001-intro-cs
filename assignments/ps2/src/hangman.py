@@ -12,7 +12,7 @@
 import random
 import string
 
-WORDLIST_FILENAME = "data/words.txt"
+WORDLIST_FILENAME = "assignments/ps2/data/words.txt"
 
 
 def load_words():
@@ -129,10 +129,75 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    def handle_warning(warnings_left, guesses_left, reason):
+        if warnings_left > 0:
+            if warnings_left == 2:
+              print(f"Oops! {reason} You have {warnings_left - 1} warning left:", end=" ")
+            else:
+              print(f"Oops! {reason} You have {warnings_left - 1} warnings left:", end=" ")
+            return warnings_left - 1, guesses_left
+        else:
+            print(f"Oops! {reason} You have no warnings left so you lose one guess:", end=" ")
+            return 0, guesses_left - 1
+        
+    def show_progress(guessed_word):
+        print(guessed_word)
+        print("-------------")
+        
+    guesses_left = 6
+    warnings_left = 3
+    max_score = guesses_left * len(set(secret_word))
+    letters_guessed = []
+    vowels = "aeiou"
+    
+    print("Welcome to the game Hangman!")
+    print(f"I am thinking of word that is {len(secret_word)} letters long.")
+    print("-------------")
+    print(f"You have {warnings_left} warnings left.")
+    print("-------------")    
 
+    while guesses_left > 0 and not is_word_guessed(secret_word, letters_guessed):
+        # start each turn displaying guesses and available letters
+        print(f"You have {guesses_left} guesses left.")
+        print(f"Available letters: {get_available_letters(letters_guessed)}")
 
+        # normalize input
+        guess = input("Please guess a letter: ").strip().lower()      
+
+        # test input
+        if not guess.isalpha() or len(guess) != 1:  # ensure it's single-char alpha
+            warnings_left, guesses_left = handle_warning(warnings_left, guesses_left, "That is not a valid letter.")
+            show_progress(get_guessed_word(secret_word, letters_guessed))
+            continue
+        elif guess in letters_guessed:  # if alpha, ensure it's not been guessed
+            warnings_left, guesses_left = handle_warning(warnings_left, guesses_left, "You've already guessed that letter.")
+            show_progress(get_guessed_word(secret_word, letters_guessed))
+            continue
+        else:  # if alpha and not guessed, add to list and update guessed word
+            letters_guessed.append(guess)
+      
+        # proper input
+        if guess in secret_word:
+            print(f"Good guess:", end=" ")
+        else:
+            if guess in vowels:
+                guesses_left -= 2
+            else:
+                guesses_left -= 1
+            print(f"Oops! That letter is not in my word:", end=" ")
+
+        show_progress(get_guessed_word(secret_word, letters_guessed))
+    
+    # endgame
+    if is_word_guessed(secret_word, letters_guessed):
+        score = guesses_left * len(set(secret_word))
+        print("Congratulations, you won!")
+        print(f"Your total score for this game is: {score} / {max_score}")
+    else:
+        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+
+        
+            
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
@@ -217,8 +282,8 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
     
-    secret_word = choose_word(wordlist)
-    hangman(secret_word)
+    # secret_word = choose_word(wordlist)
+    hangman("apple")
 
 ###############
     
