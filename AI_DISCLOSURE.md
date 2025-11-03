@@ -10,14 +10,19 @@ Throughout this course, I consulted with a ChatGPT Project with custom instructi
 
 I completed this course several years ago, but never saved my assignments as I knew most of it already. I decided to start a portfolio with my work, but with the hindsight of how I could make these assignments more robust. This is primarily where I use GPT: as a way to learn where my approach could be refined and improved beyond mere reflection. That is, I want to learn to approach more professionally and learn from a "professional" by submitting my attempts and getting direct feedback.
 
-I've linked all interactions below with fully self-generated feedback in the respective files.
+Some (but not all) Markdown templates were inspired by but not created by GPT. The idea of using GitHub as a comprehensive portfolio (for more than just programming) is my own.
+
+I've linked all interactions for this course with fully self-generated feedback in the respective files.
 
 ## Chat Links
 
-- ### [Problem Set 0](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps0/AI_DISCLOSURE.md)
-- ### [Problem Set 1](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps1/AI_DISCLOSURE.md)
-- ### [Problem Set 2](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps2/AI_DISCLOSURE.md)
+### General Chats
 
+### Assignment Chats
+
+- #### [Problem Set 0](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps0/AI_DISCLOSURE.md)
+- #### [Problem Set 1](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps1/AI_DISCLOSURE.md)
+- #### [Problem Set 2](https://github.com/nescient-18/mit-6.0001-intro-cs/blob/main/assignments/ps2/AI_DISCLOSURE.md)
 
 ## Materials
 

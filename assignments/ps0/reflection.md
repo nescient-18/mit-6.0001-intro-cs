@@ -1,4 +1,4 @@
-# Reflection — Problem Set #1
+# Reflection — Problem Set #0
 **Course:** 6.0001 – Introduction to Computer Science  
 **Date Completed:** 2025-10-25
 
