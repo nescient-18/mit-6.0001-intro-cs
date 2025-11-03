@@ -218,8 +218,21 @@ def match_with_gaps(my_word, other_word):
         _ , and my_word and other_word are of the same length;
         False otherwise: 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    other_word = other_word.strip().lower()  # remove risk of any list errors
+    my_word = my_word.replace(" ", "")  # will have form "a__le" instead of "a_ _ le"; lower case, strip invariant guaranteed from input
+
+    if len(my_word) != len(other_word):  # impossible if different length
+        return False
+    
+    revealed = set(c for c in my_word if c.isalpha())  # O(1) instead of O(n)
+    
+    # guaranteed same length, no risk of index errors
+    for i in range(len(my_word)):
+        if my_word[i].isalpha() and my_word[i] != other_word[i]:  # if it's alphabetical, index values must be identical to be a potential candidate
+            return False
+        elif my_word[i] == "_" and other_word[i] in revealed:  # if it's _, that index value in other_word cannot appear in any revealed 
+            return False
+    return True
 
 
 
