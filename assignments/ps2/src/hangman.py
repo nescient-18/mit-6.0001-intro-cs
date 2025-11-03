@@ -246,8 +246,17 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    matches = False
+
+    for word in wordlist:
+        if match_with_gaps(my_word, word):
+            matches = True
+            print(word, end=" ")
+    
+    if not matches:
+        print("No matches founds")
+    else:
+        print()
 
 
 
@@ -296,12 +305,14 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     # secret_word = choose_word(wordlist)
-    hangman("apple")
+    # hangman(secret_word)
 
 ###############
     
     # To test part 3 re-comment out the above lines and 
     # uncomment the following two lines. 
+
+    show_possible_matches("taaaa _ t")
     
-    #secret_word = choose_word(wordlist)
-    #hangman_with_hints(secret_word)
+    # secret_word = choose_word(wordlist)
+    # hangman_with_hints(secret_word)
