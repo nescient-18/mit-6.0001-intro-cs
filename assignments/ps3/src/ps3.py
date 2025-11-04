@@ -188,9 +188,15 @@ def is_valid_word(word, hand, word_list):
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     returns: boolean
-    """
+    """  
+    word = word.lower()
+    word_counts = get_frequency_dict(word)
 
-    pass  # TO DO... Remove this line when you implement this function
+    for c in word_counts:
+        if word_counts[c] > hand.get(c,0):
+            return False
+        
+    return word in word_list
 
 #
 # Problem #5: Playing a hand
