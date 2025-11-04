@@ -170,8 +170,10 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
+    word_counts = get_frequency_dict(word.lower())
+    return {c: max(hand[c] - word_counts.get(c, 0), 0) for c in hand}
 
-    pass  # TO DO... Remove this line when you implement this function
+
 
 #
 # Problem #3: Test word validity
