@@ -23,7 +23,7 @@ SCRABBLE_LETTER_VALUES = {
 # Helper code
 # (you don't need to understand this helper code)
 
-WORDLIST_FILENAME = "words.txt"
+WORDLIST_FILENAME = "../data/words.txt"
 
 def load_words():
     """
@@ -91,8 +91,11 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
-    
-    pass  # TO DO... Remove this line when you implement this function
+    if not word.isalpha():
+        return 0
+        
+    return sum(SCRABBLE_LETTER_VALUES[c] for c in word.lower()) * \
+           max(7 * len(word) - 3 * (n - len(word)), 1)
 
 #
 # Make sure you understand how this function works and what it does!
