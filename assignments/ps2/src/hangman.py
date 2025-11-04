@@ -14,7 +14,6 @@ import string
 
 WORDLIST_FILENAME = "assignments/ps2/data/words.txt"
 
-
 def load_words():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
@@ -104,7 +103,7 @@ def get_available_letters(letters_guessed):
     
     
 
-def hangman(secret_word):
+def hangman(secret_word, guesses_left=6, warnings_left=3):
     '''
     secret_word: string, the secret word to guess.
     
@@ -144,8 +143,6 @@ def hangman(secret_word):
         print(guessed_word)
         print("-------------")
         
-    guesses_left = 6
-    warnings_left = 3
     max_score = guesses_left * len(set(secret_word))
     letters_guessed = []
     vowels = "aeiou"
@@ -246,7 +243,7 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    matches = False
+    matches = False  # precludes the need for checking an empty list
 
     for word in wordlist:
         if match_with_gaps(my_word, word):
@@ -256,7 +253,7 @@ def show_possible_matches(my_word):
     if not matches:
         print("No matches founds")
     else:
-        print()
+        print()  # formatting
 
 
 
