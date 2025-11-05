@@ -16,7 +16,7 @@ CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
 HAND_SIZE = 7
 
 SCRABBLE_LETTER_VALUES = {
-    'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
+    '*' : 0, 'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
 }
 
 # -----------------------------------
@@ -52,8 +52,8 @@ def get_frequency_dict(sequence):
     sequence: string or list
     return: dictionary
     """
-    
     # freqs: dictionary (element_type -> int)
+
     freq = {}
     for x in sequence:
         freq[x] = freq.get(x,0) + 1
@@ -90,10 +90,7 @@ def get_word_score(word, n):
     word: string
     n: int >= 0
     returns: int >= 0
-    """
-    if not word.isalpha():
-        return 0
-        
+    """     
     return sum(SCRABBLE_LETTER_VALUES[c] for c in word.lower()) * \
            max(7 * len(word) - 3 * (n - len(word)), 1)
 
@@ -136,8 +133,8 @@ def deal_hand(n):
     returns: dictionary (string -> int)
     """
     
-    hand={}
-    num_vowels = int(math.ceil(n / 3))
+    hand={'*' : 1}  # start each hand with wildcard
+    num_vowels = int(math.ceil(n / 3)) - 1  # make space for wildcard
 
     for i in range(num_vowels):
         x = random.choice(VOWELS)
@@ -192,10 +189,18 @@ def is_valid_word(word, hand, word_list):
     word = word.lower()
     word_counts = get_frequency_dict(word)
 
+    # test hand has enough/appropriate letters
     for c in word_counts:
-        if word_counts[c] > hand.get(c,0):
-            return False
-        
+        if word_counts[c] > hand.get(c,0):  # if just one letter in `word` is 
+            return False                    # more than what's available, return False    
+
+    if '*' in word:
+        for v in VOWELS:  # go over all possible combinations
+            if word.replace('*', v) in word_list:
+                return True
+        return False  # if none of the possibilities are valid, return false
+    
+    # check the longer operation last
     return word in word_list
 
 #
